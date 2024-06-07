@@ -1,9 +1,11 @@
 import 'package:first_project62/login_page.dart';
+import 'package:first_project62/shared/chach_helper.dart';
 import 'package:first_project62/widgets/default_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'bulider_onboarding.dart';
+import 'enum.dart';
 import 'model/onboarding_model.dart';
 
 class OnBoardingPage extends StatefulWidget {
@@ -17,6 +19,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   var pageController = PageController();
 
   bool isLast = false;
+   int i = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +73,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               height: MediaQuery.of(context).size.height *0.7 ,
               //width: MediaQuery.of(context).size.width,
               child: PageView.builder(
-
                   controller: pageController,
                   itemCount: onBoardingItem.length,
                   itemBuilder: (context ,index){
@@ -81,6 +83,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                    if(index == onBoardingItem.length-1){
                       setState(() {
                         isLast= true;
+                        CacheHelper.putBool(value: isLast ,
+                            key:SharedKeys.onBoardingIsLast ); // save
+
+                        // CacheHelper.putInt(value: i, key: 1);
+                        // CacheHelper.getInt(key: 1);
                       });
 
                    }else{

@@ -1,3 +1,4 @@
+import 'package:first_project62/shared/chach_helper.dart';
 import 'package:first_project62/splash_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'login_page.dart';
 import 'onboarding_page.dart';
 
 void main(){
+  CacheHelper.init();
   runApp(const MyApp());
 }
 
